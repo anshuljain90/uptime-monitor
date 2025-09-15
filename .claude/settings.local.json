@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install)",
+      "Bash(wrangler d1 create:*)",
+      "Bash(wrangler whoami:*)",
+      "Bash(wrangler login:*)",
+      "Bash(wrangler kv namespace create:*)",
+      "Bash(wrangler d1 execute:*)",
+      "Bash(npm init:*)",
+      "Bash(npm run dev:*)",
+      "Bash(node:*)",
+      "Bash(curl:*)",
+      "Bash(npx tailwindcss init:*)",
+      "Bash(cat:*)",
+      "Bash(lsof:*)",
+      "Bash(xargs kill:*)",
+      "Bash(python3:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "name": "uptime-monitor",
+  "version": "1.0.0",
+  "description": "Free uptime monitoring solution built for Cloudflare",
+  "main": "workers/index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:workers\" \"npm run dev:frontend\"",
+    "dev:workers": "wrangler dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "build": "npm run build:workers && npm run build:frontend",
+    "build:workers": "echo 'Workers build complete'",
+    "build:frontend": "cd frontend && npm run build",
+    "deploy": "./deploy.sh",
+    "deploy:workers": "wrangler deploy",
+    "deploy:frontend": "cd frontend && npm run build && wrangler pages deploy dist",
+    "db:init": "wrangler d1 execute uptime-monitor-db --file=database/schema.sql --remote",
+    "db:local": "wrangler d1 execute uptime-monitor-db --file=database/schema.sql --local",
+    "db:query": "wrangler d1 execute uptime-monitor-db --command",
+    "tail": "wrangler tail --format=pretty",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "echo 'Linting not configured yet'",
+    "setup": "./deploy.sh"
+  },
+  "keywords": [
+    "uptime",
+    "monitoring", 
+    "cloudflare",
+    "status-page",
+    "website-monitoring",
+    "free",
+    "self-hosted"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  },
+  "dependencies": {
+    "itty-router": "^4.0.13"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anshuljain90/uptime-monitor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/anshuljain90/uptime-monitor/issues"
+  },
+  "homepage": "https://github.com/anshuljain90/uptime-monitor#readme"
+}

@@ -1,0 +1,68 @@
+name = "uptime-monitor-api"
+main = "workers/index.js"
+compatibility_date = "2024-09-25"
+compatibility_flags = ["nodejs_compat"]
+
+# Workers configuration
+[env.production]
+name = "uptime-monitor-api"
+route = { pattern = "api.yourdomain.com/*", zone_name = "yourdomain.com" }
+
+[env.staging]
+name = "uptime-monitor-api-staging"
+route = { pattern = "api-staging.yourdomain.com/*", zone_name = "yourdomain.com" }
+
+# Environment variables
+[vars]
+ENVIRONMENT = "production"
+JWT_SECRET = "your-secret-key-here-change-this"
+EMAIL_FROM = "noreply@yourdomain.com"
+
+# D1 Database
+[[d1_databases]]
+binding = "DB"
+database_name = "uptime-monitor-production"
+database_id = "771fd6f8-1a2d-461e-a199-4ac2b0465c03"
+
+[env.staging.d1_databases]
+binding = "DB"
+database_name = "uptime-monitor-staging"
+database_id = "your-staging-d1-database-id"
+
+# KV Namespaces
+[[kv_namespaces]]
+binding = "UPTIME_MONITOR_KV"
+id = "03371dd2685845faad948757c9f29d62"
+
+[env.staging.kv_namespaces]
+binding = "UPTIME_MONITOR_KV"
+id = "your-staging-kv-namespace-id"
+
+# Cron Triggers
+[triggers]
+crons = [
+  "*/5 * * * *",    # Every 5 minutes for monitoring checks
+  "0 0 * * *"       # Daily at midnight for statistics calculation
+]
+
+# Analytics
+[[analytics_engine_datasets]]
+binding = "ANALYTICS"
+
+# Build configuration
+# [build]
+# command = "npm run build"
+# cwd = "workers"
+
+# Resource limits
+[limits]
+cpu_ms = 50
+
+# Development settings
+[dev]
+port = 8787
+
+# Enable local persistence (for development)
+[miniflare]
+d1_persist = true
+kv_persist = true
