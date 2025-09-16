@@ -109,53 +109,82 @@ uptime-monitor/
 git clone https://github.com/anshuljain90/uptime-monitor.git
 cd uptime-monitor
 npm install
-cd frontend && npm install  # Install frontend dependencies
-cd ..
-npm run dev          # Start both workers and frontend dev servers
-npm run build        # Build for production
+npm run dev          # Start development servers
 npm run deploy       # Deploy to Cloudflare
 ```
-
-### Development Scripts
-
-- `npm run dev` - Start both workers and frontend dev servers concurrently
-- `npm run dev:workers` - Start only the Cloudflare Workers dev server (port 8787)
-- `npm run dev:frontend` - Start only the frontend dev server
-- `npm run build` - Build both workers and frontend for production
-- `npm run deploy` - Full deployment using interactive deploy script
-- `npm run db:init` - Initialize database schema (remote)
-- `npm run db:local` - Initialize database schema (local)
-- `npm run tail` - View live worker logs
-
-## Current Implementation Status
-
-### ✅ Completed Features
-- **Backend Infrastructure**: Complete Cloudflare Workers setup with routing and middleware
-- **Authentication System**: JWT-based user authentication with secure session management
-- **Database Schema**: Full D1 SQLite database with users, monitors, incidents, and status pages tables
-- **API Endpoints**: All core endpoints implemented (auth, monitors, alerts, status pages, public)
-- **Frontend Foundation**: React-based dashboard with Tailwind CSS and responsive design
-- **Development Environment**: Concurrent dev servers with hot reload for both workers and frontend
-- **Deployment System**: Automated deployment scripts with interactive setup
-
-### 🚧 In Development
-- **Monitor Creation UI**: Interface for adding and editing monitors
-- **Monitoring Engine**: Actual monitoring logic and health checks
-- **Notification System**: Email and webhook alert implementations
-- **Dashboard Analytics**: Real-time charts and uptime statistics
-- **Public Status Pages**: Customer-facing status page functionality
-
-### 📋 Next Priorities
-1. Build monitor creation and management UI
-2. Implement monitoring logic in workers/monitoring/checker.js
-3. Set up Cloudflare Cron Triggers for automated checks
-4. Add notification system (email/webhook/push)
-5. Create public status page templates
-6. Add historical data visualization and analytics
 
 ## API Documentation
 
 Full API documentation available at `/docs` endpoint after deployment.
+
+## Contributing
+
+### Steps
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add this amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request into develop branch
+
+### Git Commit Best Practices
+
+- **Follow a one-feature/fix/enhancement per branch approach**  
+  Work on one logical change at a time. Keep the scope of each branch and commit focused.
+
+- **Commit frequently with detailed messages**  
+  Write meaningful commit messages as you make progress. Don’t wait until the end to commit everything at once.
+
+- **If committing a single file, the commit message MUST start with the filename**  
+
+- **Do not mention Claude or any internal/proprietary tools in commit messages**
+
+- **Keep `CHANGELOG.md` updated** : Update the `Unreleased` section continuously as a part of your commits, no need to make seaparate commit if adding anything to `Unreleased` section. Create separate commit for CHANGELOG.md in case creating a tag.
+
+- **Keep `README.md` updated** : if there is any important information in the commit which should reflect in README.md then make the necessary change and add README.md in the same commit
+
+- **Keep `claude.md` updated** : if there is any important information in the commit which should reflect in claude.md then make the necessary change and add claude.md in the same commit
+
+- **Keep swagger updated** : if there is any change in the API contract then make the necessary changes so that swagger UI is always updated. In such cases if APIs become backward in-compatible then major version should be bumped in CHANGELOG.md
+
+- **Keep `NOTICE.md` updated** : if we use/ remove any new third-party project or there is any change in any component of any of the existing third-party projects, that should reflect in NOTICE.md file as a separate commit
+
+- **Structure commit messages properly**  
+  Use the following format:
+  
+  ```
+  <type>: <short summary>
+
+  [Optional body with reasoning or context]
+
+  [Optional footer for issue reference, breaking change, etc.]
+  ```
+
+  Example:
+
+  ```
+  feat: implement user login with JWT
+
+  Adds secure login endpoint and token generation logic.
+  Updates validation and error handling.
+  ```
+
+- **Use conventional commit types**
+  - `feat`: a new feature  
+  - `fix`: a bug fix  
+  - `docs`: documentation only  
+  - `style`: formatting, whitespace, linting  
+  - `refactor`: non-functional code changes  
+  - `test`: adding or updating tests  
+  - `chore`: configuration, build scripts, or tooling
+
+- **Avoid vague or generic messages** : eg. `update`, `stuff`, `misc`  
+
+- **Reference issues or tickets appropriately**  
+  Use `Fixes #123`, `Refs #456` in the footer to link commits to issues.
+
+- **Squash or rebase before merge**  
+  Clean up local history if needed before merging into `develop`.
 
 ## License
 

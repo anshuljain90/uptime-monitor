@@ -15,7 +15,11 @@
       "Bash(cat:*)",
       "Bash(lsof:*)",
       "Bash(xargs kill:*)",
-      "Bash(python3:*)"
+      "Bash(python3:*)",
+      "Bash(./deploy.sh)",
+      "Bash(wrangler deploy:*)",
+      "Bash(npm run build:*)",
+      "Bash(wrangler pages deploy:*)"
     ],
     "deny": [],
     "ask": []

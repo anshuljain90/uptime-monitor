@@ -22,7 +22,7 @@ EMAIL_FROM = "noreply@yourdomain.com"
 [[d1_databases]]
 binding = "DB"
 database_name = "uptime-monitor-production"
-database_id = "771fd6f8-1a2d-461e-a199-4ac2b0465c03"
+database_id = "aabfb21a-fed5-4059-b26a-8d9ce7375bf0"
 
 [env.staging.d1_databases]
 binding = "DB"
@@ -45,24 +45,20 @@ crons = [
   "0 0 * * *"       # Daily at midnight for statistics calculation
 ]
 
-# Analytics
-[[analytics_engine_datasets]]
-binding = "ANALYTICS"
-
 # Build configuration
 # [build]
 # command = "npm run build"
 # cwd = "workers"
 
-# Resource limits
-[limits]
-cpu_ms = 50
+# Resource limits (not supported on free plan)
+# [limits]
+# cpu_ms = 50
 
 # Development settings
 [dev]
 port = 8787
 
 # Enable local persistence (for development)
-[miniflare]
-d1_persist = true
-kv_persist = true
+# [miniflare]
+# d1_persist = true
+# kv_persist = true

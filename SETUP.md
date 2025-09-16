@@ -17,8 +17,8 @@ If your domain is managed by another DNS provider (like GoDaddy, Namecheap, etc.
 1. **Create a subdomain CNAME record**:
    ```
    Type: CNAME
-   Name: uptimeguard (or your preferred subdomain)
-   Value: uptimeguard.pages.dev (temporary, will update later)
+   Name: status (or your preferred subdomain)
+   Value: uptime-monitor.pages.dev (temporary, will update later)
    TTL: 300 (5 minutes)
    ```
 
@@ -56,7 +56,7 @@ Follow the authentication flow to connect Wrangler to your Cloudflare account.
 
 ```bash
 git clone <repository-url>
-cd uptimeguard
+cd uptime-robot
 ```
 
 ## Step 4: Configure Environment
